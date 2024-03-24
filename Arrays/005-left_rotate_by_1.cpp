@@ -1,24 +1,22 @@
 #include <iostream>
 #include <vector>
 
-//Two-pointer approach
-int removeDuplicate(std::vector<int>& array){
-    int k=1;
-    int n = array.size();
+void left_rotate_by_1(std::vector<int>& arr){
+    int temp = arr[0];
+    int n = arr.size();
 
     for(int i=1; i<n; i++){
-        if(array[k-1] != array[i]){
-            array[k] = array[i];
-            k++;
-        }
+        arr[i-1] = arr[i];
     }
-
-    return k;
+    arr[n-1] = temp;
 }
 
 int main(){
+    
     std::vector<int> A = {1, 2, 2, 3, 4, 4, 4, 5, 6, 7, 7, 8, 9, 100, 100, 100};
-    int n = removeDuplicate(A);
+    int n = A.size();
+    left_rotate_by_1(A);
+    std::cout<<"Rotated array\n ";
     for(int i=0; i<n; i++){
         std::cout<<A[i]<<", ";
     }
