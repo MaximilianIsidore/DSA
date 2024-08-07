@@ -52,6 +52,7 @@ class LinkedList: node<T>{
             if(head->next == nullptr){
                 delete head;
                 head = nullptr;
+                top_data = T();
                 return;
             }
 
@@ -91,10 +92,12 @@ class stack{
         }
 
         void pop(){
-            if(top>=0){
+
+            if(!isEmpty()){
                 st.removeElement();
-                top--;
+                if(top>=0) top--;
             }
+            
         }
 
         T back(){
@@ -118,6 +121,9 @@ int main(){
 
     stack<string> st;
 
+    cout<<st.back()<<" ";
+    cout<<"\n";
+
     for(auto s : arr){
         st.push(s);
         cout<<st.peek()<<" ";
@@ -129,6 +135,10 @@ int main(){
         st.pop();
     }
     cout<<"\n";
+
+    //edge cases
+    cout<<st.back()<<" ";
+    st.pop();
 
 
     return 0;
