@@ -38,6 +38,10 @@ int main(){
     int (*ptrAr1)[5];//it's of the type of int (*)[5], assining it with &ar should work
     ptrAr1 = &ar;
 
+    printf("%p ", ptrAr1);//prints address of ar
+    printf("%p ", *ptrAr1);//prints address of ar[0]
+    printf("%d ", **ptrAr1);//prints value at ar[0]
+    printf("\n");
     for(int i=0;i<5; i++){
        // printf("%d ", ptrAr1[i]);// prints random things, cuz ptrAr1[i] = *(ptrAr1 + 1), which will adding n*4 bytes to the ptrAr1
         printf("%d ", (*ptrAr1)[i]); //*ptrAr1 -> address of 1st element, (*ptrAr)[i] = *(1st add + i), just adds 4 bytes
