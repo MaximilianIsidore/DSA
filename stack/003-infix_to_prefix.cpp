@@ -6,7 +6,7 @@ int precedence(char ch){
 
   if(ch == '+' || ch == '-'){
     return 1;
-  }else if(ch == '*' || ch == '-'){
+  }else if(ch == '*' || ch == '/'){
     return 2;
   }else if(ch == '^'){
     return 3;
@@ -16,12 +16,24 @@ int precedence(char ch){
 
 }
 
+void swapParentheses(char &ch) {
+    if (ch == '(') {
+        ch = ')';
+    } else if (ch == ')') {
+        ch = '(';
+    }
+}
 
 
 string infixToPrefix(string prefix){
     stack<char> st;
     reverse(prefix.begin(), prefix.end());
     string result;
+
+    for (int i = 0; i < prefix.length(); i++) {
+        swapParentheses(prefix[i]);
+    }
+
 
     for(int i=0; i<prefix.size(); i++){
       char ch = prefix[i];
